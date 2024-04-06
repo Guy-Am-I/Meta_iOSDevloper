@@ -152,10 +152,11 @@ struct ReservationForm: View {
                 model.reservation = temporaryReservation
             }
             
-            // add an alert after this line
-            .alert("FormValidationFail", isPresented: $showFormInvalidMessage) {
-                Text(errorMessage)
-            }
+            .alert("ERROR", isPresented: $showFormInvalidMessage, actions: {
+                Button("OK", role: .cancel) { }
+            }, message: {
+                Text(self.errorMessage)
+            })
             
         }
         .onAppear {
