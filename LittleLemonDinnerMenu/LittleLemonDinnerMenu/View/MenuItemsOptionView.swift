@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-enum categories: String, CaseIterable {
-    case food = "Food"
-    case drink = "Drink"
-    case dessert = "Dessert"
-}
-enum sortingOptions: String, CaseIterable {
+
+enum SortingOptions: String, CaseIterable {
     case popularity = "Most Popular"
     case price = "Price $-$$$"
     case alphabetically = "A-Z"
@@ -27,14 +23,14 @@ struct MenuItemsOptionView: View {
             Form {
                 Section("Selected Categories") {
                     List {
-                        ForEach(categories.allCases, id: \.self) {
+                        ForEach(MenuCategory.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
                     }
                 }
                 Section("Sort By") {
                     List {
-                        ForEach(sortingOptions.allCases, id: \.self) {
+                        ForEach(SortingOptions.allCases, id: \.self) {
                             Text($0.rawValue)
                         }
                     }
