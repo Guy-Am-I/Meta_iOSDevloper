@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MenuItemsOptionView: View {
+    @Binding var isPresented: Bool
+    
     let categories = ["Food", "Drink", "Dessert"]
     let sortingOptions = ["Most Popular", "Price $-$$$", "A-Z"]
     
@@ -32,7 +34,7 @@ struct MenuItemsOptionView: View {
             .navigationTitle("Filter")
             .toolbar {
                 ToolbarItem (){ Button(
-                    action: {},
+                    action: {isPresented = false},
                     label: {Text("Done")})
                 }
             }
@@ -41,5 +43,5 @@ struct MenuItemsOptionView: View {
 }
 
 #Preview {
-    MenuItemsOptionView()
+    MenuItemsOptionView(isPresented: .constant(true))
 }

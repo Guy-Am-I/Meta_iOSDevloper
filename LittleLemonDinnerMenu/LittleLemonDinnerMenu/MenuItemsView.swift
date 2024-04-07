@@ -13,6 +13,8 @@ struct MenuItemsView: View {
         GridItem(.flexible(minimum: 80), spacing: 10),
         GridItem(.flexible(minimum: 80), spacing: 10)
     ]
+    @State var filterActive: Bool = false
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -30,11 +32,16 @@ struct MenuItemsView: View {
             }
             .navigationTitle("Menu")
             .toolbar {
-                ToolbarItem (){ Button(
-                    action:{},
-                    label: { Image(systemName: "slider.horizontal.3") })
+                ToolbarItem () {
+                    Button(
+                        action: {filterActive = true},
+                        label: { Image(systemName: "slider.horizontal.3") }
+                    )
                 }
             }
+            .sheet(isPresented: $filterActive, content: {
+                MenuItemsOptionView(isPresented: $filterActive)
+            })
         }
     }
     
