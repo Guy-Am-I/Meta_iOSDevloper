@@ -7,26 +7,35 @@
 
 import SwiftUI
 
+enum categories: String, CaseIterable {
+    case food = "Food"
+    case drink = "Drink"
+    case dessert = "Dessert"
+}
+enum sortingOptions: String, CaseIterable {
+    case popularity = "Most Popular"
+    case price = "Price $-$$$"
+    case alphabetically = "A-Z"
+}
+
+
 struct MenuItemsOptionView: View {
     @Binding var isPresented: Bool
-    
-    let categories = ["Food", "Drink", "Dessert"]
-    let sortingOptions = ["Most Popular", "Price $-$$$", "A-Z"]
-    
+        
     var body: some View {
         NavigationView {
             Form {
                 Section("Selected Categories") {
                     List {
-                        ForEach(categories, id: \.self) {
-                            Text($0)
+                        ForEach(categories.allCases, id: \.self) {
+                            Text($0.rawValue)
                         }
                     }
                 }
                 Section("Sort By") {
                     List {
-                        ForEach(sortingOptions, id: \.self) {
-                            Text($0)
+                        ForEach(sortingOptions.allCases, id: \.self) {
+                            Text($0.rawValue)
                         }
                     }
                 }
