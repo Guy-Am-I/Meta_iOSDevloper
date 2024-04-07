@@ -8,27 +8,62 @@
 import SwiftUI
 
 struct MenuItemsView: View {
+    let model = ModelViewViewModel()
     let columns = [
-        GridItem(.flexible(minimum: 80), spacing: 10),
-        GridItem(.flexible(minimum: 80), spacing: 10),
-        GridItem(.flexible(minimum: 80), spacing: 10)
+        GridItem(.flexible(minimum: 80)),
+        GridItem(.flexible(minimum: 80)),
+        GridItem(.flexible(minimum: 80))
     ]
     @State var filterActive: Bool = false
     
     var body: some View {
         NavigationStack {
             ScrollView {
-                LazyVGrid(columns: columns) {
-                    ForEach(0x1f600...0x1f679, id: \.self) { value in
-                        GroupBox {
-                            Text(emoji(value))
-                                .font(.largeTitle)
-                                .fixedSize()
-                            Text(String(format: "%x", value))
-                                .fixedSize()
+                VStack(alignment: .leading) {
+                    Text("Food").font(.title)
+                    LazyVGrid(columns: columns) {
+                        ForEach(model.foodMenuItems) { food in
+                            NavigationLink(destination: MenuItemsDetailsView(item: food)) {
+                                VStack {
+                                    Rectangle()
+                                        .fill(.black)
+                                        .frame(width:100, height:100, alignment: .leading)
+                                    Text(food.title)
+                                        .fixedSize()
+                                }
+                            }
+                        }
+                    }
+                    Text("Drinks").font(.title)
+                    LazyVGrid(columns: columns) {
+                        ForEach(model.drinkMenuItems) { drink in
+                            NavigationLink(destination: MenuItemsDetailsView(item: drink)) {
+                                VStack {
+                                    Rectangle()
+                                        .fill(.black)
+                                        .frame(width:100, height:100, alignment: .leading)
+                                    Text(drink.title)
+                                        .fixedSize()
+                                }
+                            }
+                        }
+                    }
+                    Text("Dessert").font(.title)
+                    LazyVGrid(columns: columns) {
+                        ForEach(model.dessertMenuItems) { dessert in
+                            NavigationLink(destination: MenuItemsDetailsView(item: dessert)) {
+                                VStack {
+                                    Rectangle()
+                                        .fill(.black)
+                                        .frame(width:100, height:100, alignment: .leading)
+                                    Text(dessert.title)
+                                        .fixedSize()
+                                }
+                            }
                         }
                     }
                 }
+                .padding([.leading, .trailing])
             }
             .navigationTitle("Menu")
             .toolbar {

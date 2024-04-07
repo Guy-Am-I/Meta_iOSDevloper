@@ -15,13 +15,13 @@ class ModelViewViewModel {
     
     init() {
         foodMenuItems = (1..<13).map {
-            MenuItem(id: UUID(), title: "FoodItem", category: MenuCategory.food, price: Double($0), ingredients: [])
+            MenuItem(id: UUID(), title: "Food \($0)", category: MenuCategory.food, price: Double($0), ingredients: [])
         }
         drinkMenuItems = (1..<9).map {
-            MenuItem(id: UUID(), title: "FoodItem", category: MenuCategory.drink, price: Double($0)*2, ingredients: [])
+            MenuItem(id: UUID(), title: "Drink \($0)", category: MenuCategory.drink, price: Double($0)*2, ingredients: [])
         }
         dessertMenuItems = (1..<5).map {
-            MenuItem(id: UUID(), title: "FoodItem", category: MenuCategory.dessert, price: Double($0)*5, ingredients: [])
+            MenuItem(id: UUID(), title: "Dessert \($0)", category: MenuCategory.dessert, price: Double($0)*5, ingredients: [])
         }
     }
 }

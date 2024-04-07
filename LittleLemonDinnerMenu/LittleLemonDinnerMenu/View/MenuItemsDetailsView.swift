@@ -8,25 +8,31 @@
 import SwiftUI
 
 struct MenuItemsDetailsView: View {
-    let itemInfo = ["Price", "Ordered", "Ingredients"]
+    var item: MenuItem
     var body: some View {
-        ScrollView {
-            VStack {
-                Image("LittleLemonLogo")
-                    .resizable()
-                    .frame(width: 250, height: 500, alignment: .top)
-                ScrollView {
-                    ForEach(itemInfo, id: \.self) {
-                        Text($0)
+        VStack(alignment: .leading) {
+            Text(item.title).font(.largeTitle).bold()
+            ScrollView {
+                VStack {
+                    Image("LittleLemonLogo")
+                        .resizable()
+                        .frame(width: .infinity, height: 500)
+                    VStack {
+                        Text("Price:").font(.title)
+                        Text(String(item.price))
+                        Text("Ordered:").font(.title)
+                        Text(String(item.ordersCount))
+                        Text("Ingredietns:").font(.title)
+                        ForEach(item.ingredients, id: \.self) {
+                            Text($0.rawValue)
+                        }
                     }
                 }
-            }
-            .padding([.leading, .trailing], 40)
+            }.padding([.leading, .trailing], 40)
         }
-        .navigationTitle("Food Name")
     }
 }
 
 #Preview {
-    MenuItemsDetailsView()
+    MenuItemsDetailsView(item: MenuItem(id: UUID(), title: "preview", category: .food, price: 20, ingredients: [.Broccoli, .Carrot]))
 }
