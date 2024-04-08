@@ -11,7 +11,7 @@ extension Dish {
             if let doesExist = Dish.exists(name: menuItem.title, context), !doesExist {
                 let dish = Dish(context: context)
                 dish.name = menuItem.title
-                dish.price = menuItem.price
+                dish.price = Float(menuItem.price) ?? 0
             }
         }
     }

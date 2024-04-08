@@ -23,6 +23,7 @@ struct OurDishes: View {
                 .cornerRadius(20)
             
             
+            
             NavigationView {
                 FetchedObjects(
                     predicate: buildPredicate(),
@@ -36,10 +37,9 @@ struct OurDishes: View {
                                     }
                             }
                         }
-                        // add the search bar modifier here
+                        .searchable(text: $searchText)
                     }
             }
-            
             // SwiftUI has this space between the title and the list
             // that is amost impossible to remove without incurring
             // into complex steps that run out of the scope of this
@@ -53,14 +53,26 @@ struct OurDishes: View {
             }
             
             // makes the list background invisible, default is gray
-                   .scrollContentBackground(.hidden)
+            .scrollContentBackground(.hidden)
             
             // runs when the view appears
-                   .task {
-                       await dishesModel.reload(viewContext)
-                   }
+            .task {
+                await dishesModel.reload(viewContext)
+            }
             
         }
+    }
+    
+    func buildPredicate() -> NSPredicate {
+        return searchText.isEmpty ?
+        NSPredicate(value: true) :
+        NSPredicate(format: "name CONTAINS[cd] %@", searchText)
+    }
+    
+    func buildSortDescriptors() -> [NSSortDescriptor] {
+        return [
+            NSSortDescriptor(key: "name", ascending: true, selector: #selector(NSString .localizedCaseInsensitiveCompare))
+        ]
     }
 }
 

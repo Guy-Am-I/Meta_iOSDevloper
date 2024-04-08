@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		414B3E99293A705B008DCB9D /* MenuStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 414B3E98293A705B008DCB9D /* MenuStruct.swift */; };
-		417525FF292269EC00B8137D /* M4Exercise.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 417525FD292269EC00B8137D /* M4Exercise.xcdatamodeld */; };
+		417525FF292269EC00B8137D /* LittleLemonOrderApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 417525FD292269EC00B8137D /* LittleLemonOrderApp.xcdatamodeld */; };
 		4175260829228ACA00B8137D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4175260729228ACA00B8137D /* Persistence.swift */; };
 		418FBA4C293902D800814B08 /* OurDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FBA4B293902D800814B08 /* OurDishes.swift */; };
 		418FBA4E2939039800814B08 /* DishesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 418FBA4D2939039800814B08 /* DishesModel.swift */; };
@@ -122,7 +122,7 @@
 				4195E88B292B7B45005A5B28 /* Dish+CoreDataProperties.swift */,
 				4195E88C292B7B45005A5B28 /* Location+CoreDataClass.swift */,
 				4195E88D292B7B45005A5B28 /* Location+CoreDataProperties.swift */,
-				417525FD292269EC00B8137D /* M4Exercise.xcdatamodeld */,
+				417525FD292269EC00B8137D /* LittleLemonOrderApp.xcdatamodeld */,
 				4175260729228ACA00B8137D /* Persistence.swift */,
 				41AF047B293E4D4F007D8DA7 /* FetchedObjects.swift */,
 			);
@@ -263,7 +263,7 @@
 				41B542752907E0540092B0E7 /* ReservationForm.swift in Sources */,
 				418FBA4E2939039800814B08 /* DishesModel.swift in Sources */,
 				41AF0476293DFD60007D8DA7 /* DisplayDish.swift in Sources */,
-				417525FF292269EC00B8137D /* M4Exercise.xcdatamodeld in Sources */,
+				417525FF292269EC00B8137D /* LittleLemonOrderApp.xcdatamodeld in Sources */,
 				4175260829228ACA00B8137D /* Persistence.swift in Sources */,
 				414B3E99293A705B008DCB9D /* MenuStruct.swift in Sources */,
 				41AECB772906D6A7007983FF /* Reservation.swift in Sources */,
@@ -476,13 +476,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		417525FD292269EC00B8137D /* M4Exercise.xcdatamodeld */ = {
+		417525FD292269EC00B8137D /* LittleLemonOrderApp.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				417525FE292269EC00B8137D /* MyApp.xcdatamodel */,
 			);
 			currentVersion = 417525FE292269EC00B8137D /* MyApp.xcdatamodel */;
-			path = M4Exercise.xcdatamodeld;
+			path = LittleLemonOrderApp.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

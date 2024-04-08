@@ -5,24 +5,33 @@ import CoreData
 @MainActor
 class DishesModel: ObservableObject {
     @Published var menuItems = [MenuItem]()
-    
         
     
     func reload(_ coreDataContext:NSManagedObjectContext) async {
         let url = URL(string: "https://raw.githubusercontent.com/Meta-Mobile-Developer-PC/Working-With-Data-API/main/littleLemonSimpleMenu.json")!
         let urlSession = URLSession.shared
         
+//        let task = urlSession.itemsTask(with: url) { data, response, error in
+//            if let data = data {
+//                Dish.deleteAll(coreDataContext)
+//                Dish.createDishesFrom(menuItems: data.menu, coreDataContext)
+//            } else {
+//                print("\(response!)")
+//            }
+//        }
+//        task.resume()
+        
         do {
             let (data, _) = try await urlSession.data(from: url)
+            
             let fullMenu = try JSONDecoder().decode(JSONMenu.self, from: data)
             menuItems = fullMenu.menu
-            
-            
+            print("Successfully queried API")
             // populate Core Data
             Dish.deleteAll(coreDataContext)
-            Dish.createDishesFrom(menuItems:menuItems, coreDataContext)
+            Dish.createDishesFrom(menuItems: menuItems, coreDataContext)
         }
-        catch { }
+        catch { print("Failed to query API")}
     }
 }
 
