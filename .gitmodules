@@ -1,0 +1,3 @@
+[submodule "MetaIosReactNativeApp"]
+	path = MetaIosReactNativeApp
+	url = https://github.com/Guy-Am-I/MetaIosReactNativeApp.git
